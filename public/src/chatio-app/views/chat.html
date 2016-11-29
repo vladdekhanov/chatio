@@ -12,7 +12,7 @@
                 <div ng-repeat="message in messages">
                     <span ng-if="message.type == MessageType.USER_CONNECTED_MESSAGE">{{message.msg}} is connected.</span>
                     <span ng-if="message.type == MessageType.USER_DISCONNECTED_MESSAGE">{{message.msg}} is disconnected.</span>
-                    <span ng-if="message.type == MessageType.NEW_CHAT_MESSAGE">{{message.msg}} is disconnected.</span>
+                    <span ng-if="message.type == MessageType.NEW_CHAT_MESSAGE">{{message.msg}}</span>
                 </div>
             </div>
             <form name="messageForm" layout>
