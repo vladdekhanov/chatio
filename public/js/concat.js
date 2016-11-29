@@ -1,5 +1,5 @@
 // connect to our socket server
-var socket = io.connect('http://127.0.0.1:80/');
+var socket = io.connect();
 
 var app = app || {};
 

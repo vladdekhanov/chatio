@@ -42,7 +42,7 @@ app.get("/", function(req, res){
 
 io.sockets.on('connection', function (socket) {
 
-	io.sockets.emit('blast', {msg:"<span style=\"color:red !important\">someone connected</span>"});
+	io.sockets.emit('blast', {msg:"<span style=\"color:green !important\">someone connected</span>"});
 
 	socket.on('blast', function(data, fn){
 		console.log(data);
@@ -50,6 +50,10 @@ io.sockets.on('connection', function (socket) {
 
 		fn();//call the client back to clear out the field
 	});
+
+	socket.on('disconnect', function(){
+        io.sockets.emit('blast', {msg:"<span style=\"color:red !important\">someone disconnected</span>"});
+    });
 
 });
 
