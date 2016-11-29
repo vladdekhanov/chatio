@@ -13,17 +13,24 @@ var htmlEngine = require('ejs').renderFile;
 
 var runningPortNumber = process.env.PORT;
 
-app.configure(function(){
-	// I need to access everything in '/public' directly
-	app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public', {
+	dotfiles: 'ignore',
+	etag: false,
+	extensions: ['htm', 'html'],
+	index: false,
+	maxAge: '1d',
+	redirect: false,
+	setHeaders: function (res, path, stat) {
+		res.set('x-timestamp', Date.now())
+	}
+}));
 
-	//set the view engine
-	app.engine('html', htmlEngine)
-	app.set('view engine', 'html');
-	app.set('views', __dirname +'/views');
+//set the view engine
+app.engine('html', htmlEngine)
+app.set('view engine', 'html');
+app.set('views', __dirname +'/views');
 
-	app.use(device.capture());
-});
+app.use(device.capture());
 
 
 // logs every request

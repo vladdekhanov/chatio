@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     cssmin: {
       combine: {
         files: {
-          'public/css/core.css': 'public/bower_components/bootstrap-material-design/dist/bootstrap-material-design.min.css'
+          'public/css/core.css': 'public/assets/main.css'
         }
       }
     },
@@ -64,8 +64,8 @@ module.exports = function (grunt) {
         stripBanners:true
       },
       dist: {
-        src: ['public/js/chatio-app/**/*.js'],
-        dest: 'public/js/concat.js',
+        src: ['public/src/chatio-app/**/*.js'],
+        dest: 'public/dist/concat.js',
       },
     },
 
@@ -81,7 +81,7 @@ module.exports = function (grunt) {
         }
       },
       files:{
-        src:['public/js/concat.js']
+        src:['public/dist/concat.js']
       } 
     },
 
@@ -91,7 +91,7 @@ module.exports = function (grunt) {
       },
       my_target: {
         files: {
-          'public/js/app.min.js': ['public/js/concat.js']
+          'public/dist/app.min.js': ['public/dist/concat.js']
         }
       }
     },
@@ -104,7 +104,7 @@ module.exports = function (grunt) {
         },
         scripts: {
             files: [
-                'public/js/**/*.js'
+                'public/src/**/*.js'
             ],
             tasks:['build']
         },
