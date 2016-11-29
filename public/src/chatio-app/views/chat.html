@@ -7,5 +7,18 @@
             </md-input-container>
             <md-button class="md-primary md-raised" ng-click="submitName()">Submit</md-button>
         </div>
+        <div layout="column" class="appear-element-effect chat-area" md-whiteframe="14dp" ng-show="!displayNameForm">
+            <div class="chat-container" flex>
+                <div ng-repeat="message in messages">
+                    <span ng-if="message.type == MessageType.USER_CONNECTED_MESSAGE">{{message.msg}} is connected.</span>
+                    <span ng-if="message.type == MessageType.USER_DISCONNECTED_MESSAGE">{{message.msg}} is disconnected.</span>
+                    <span ng-if="message.type == MessageType.NEW_CHAT_MESSAGE">{{message.msg}} is disconnected.</span>
+                </div>
+            </div>
+            <form name="messageForm" layout>
+                <input type="text" ng-model="currentMessage" placeholder="Type here.." flex>
+                <md-button class="md-raised md-primary" ng-click="sendCurrentMessage()">Send</md-button>
+            </form>
+        </div>
     </div>
 </c-page>

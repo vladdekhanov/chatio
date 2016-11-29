@@ -52,22 +52,46 @@ angular.module("chatio", [
 	function(
 		$rootScope,
 		$mdThemingProvider){
-        $rootScope.ioSocket = io.connect();
 		$rootScope.$defaultRouteStateName = 'index';
 	}
-]);;angular.module("chatio").controller("ChatController", [
+]);;angular.module("chatio").constant("MessageType",{
+    USER_CONNECTED_MESSAGE: 0,
+    USER_DISCONNECTED_MESSAGE: 1,
+    NEW_CHAT_MESSAGE: 2
+});;angular.module("chatio").controller("ChatController", [
     "$rootScope",
 	"$scope",
+	"MessageType",
 	function(
         $rootScope,
-		$scope
+		$scope,
+		MessageType
 	) {
-	$scope.chatPageTitle = "Welcome to chat!";
+	$scope.MessageType = MessageType;
+	$scope.messages = [];
 	$scope.userName = "";
 	$scope.displayNameForm = true;
 	
 	$scope.submitName = function() {
 		$scope.displayNameForm = false;
+		$scope.registerSocketEvents();
+	};
+
+	$scope.registerSocketEvents = function(){
+		$scope.socket = io.connect();
+		$scope.socket.on("user-connected", function(name) {
+			$scope.messages.push({type: MessageType.USER_CONNECTED_MESSAGE, msg: name})
+		});
+		$scope.socket.on("user-disconnected", function(name) {
+			$scope.messages.push({type: MessageType.USER_DISCONNECTED_MESSAGE, msg: name})
+		});
+		$scope.socket.on("new-message", function(msg) {
+			$scope.messages.push({type: MessageType.NEW_CHAT_MESSAGE, msg: msg})
+		});
+
+		$scope.socket.emit("user-connected", { name: $scope.userName }, function() {
+			$scope.userName = "";
+		});
 	};
 }]);;angular.module("chatio").controller("IndexController",[
 	"$scope",

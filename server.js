@@ -45,18 +45,17 @@ app.get("/", function(req, res){
 
 
 io.sockets.on('connection', function (socket) {
-
-	io.sockets.emit('blast', {msg:"<span style=\"color:green !important\">someone connected</span>"});
-
-	socket.on('blast', function(data, fn){
-		console.log(data);
-		io.sockets.emit('blast', {msg:data.msg});
-
-		fn();//call the client back to clear out the field
+	socket.on('user-connected', function(data) {
+		io.sockets.emit('user-connected', { name: data.name })
 	});
 
-	socket.on('disconnect', function(){
-        io.sockets.emit('blast', {msg:"<span style=\"color:red !important\">someone disconnected</span>"});
+	socket.on('new-message', function(data, onMessageSend){
+		io.sockets.emit('new-message', { msg: data.msg});
+		onMessageSend();
+	});
+
+	socket.on('disconnect', function(data){
+        io.sockets.emit('user-disconnected', { name: data.name });
     });
 
 });

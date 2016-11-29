@@ -52,7 +52,6 @@ angular.module("chatio", [
 	function(
 		$rootScope,
 		$mdThemingProvider){
-        $rootScope.ioSocket = io.connect();
 		$rootScope.$defaultRouteStateName = 'index';
 	}
 ]);
