@@ -5,7 +5,9 @@ angular.module("chatio").controller("IndexController",[
 		$scope,
 		$state
 	){
-	$scope.goToChat = function() {
-		$state.go("chat");
-	};
+		
+
+		$scope.goToChat = function() {
+			$state.go("chat");
+		};
 }]);

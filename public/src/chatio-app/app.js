@@ -3,7 +3,8 @@ angular.module("chatio", [
 	"ngMaterial"
 ]).config(function(
 	$stateProvider,
-	$urlRouterProvider
+	$urlRouterProvider,
+	$mdThemingProvider
 ){
 	$stateProvider
 		.state({
@@ -28,9 +29,28 @@ angular.module("chatio", [
 		})
 
 	$urlRouterProvider.otherwise("/");
+
+	var myRed = $mdThemingProvider.extendPalette('red', {
+    	'500': '#a50000'
+	});
+
+	// Register the new color palette map with the name <code>neonRed</code>
+	$mdThemingProvider.definePalette('chatRed', myRed);
+
+	$mdThemingProvider.theme('default')
+	.primaryPalette('chatRed')
+	.dark();
+
+	$mdThemingProvider.enableBrowserColor({
+		theme: "default",
+      	palette: "primary",
+		hue: "800"
+	});
 }).run([
 	"$rootScope",
-	function($rootScope){
+	function(
+		$rootScope,
+		$mdThemingProvider){
         $rootScope.ioSocket = io.connect();
 		$rootScope.$defaultRouteStateName = 'index';
 	}
