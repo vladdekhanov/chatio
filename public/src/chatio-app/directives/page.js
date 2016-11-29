@@ -3,7 +3,8 @@ angular.module("chatio").directive("cPage",[
 	){
     return {
         restrict: "E",
-        template: "<div class='page' layout='row' ng-transclude flex></div>",
-        transclude: true
+        template: "<div class='page' layout='column' ng-transclude flex></div>",
+        transclude: true,
+        replace: true
     };
 }]);

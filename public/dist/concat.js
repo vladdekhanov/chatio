@@ -62,6 +62,12 @@ angular.module("chatio", [
 		$scope
 	) {
 	$scope.chatPageTitle = "Welcome to chat!";
+	$scope.userName = "";
+	$scope.displayNameForm = true;
+	
+	$scope.submitName = function() {
+		$scope.displayNameForm = false;
+	};
 }]);;angular.module("chatio").controller("IndexController",[
 	"$scope",
 	"$state",
@@ -69,17 +75,18 @@ angular.module("chatio", [
 		$scope,
 		$state
 	){
-		
+	
 
-		$scope.goToChat = function() {
-			$state.go("chat");
-		};
+	$scope.goToChat = function() {
+		$state.go("chat");
+	};
 }]);;angular.module("chatio").directive("cPage",[
 	function(
 	){
     return {
         restrict: "E",
-        template: "<div class='page' layout='row' ng-transclude flex></div>",
-        transclude: true
+        template: "<div class='page' layout='column' ng-transclude flex></div>",
+        transclude: true,
+        replace: true
     };
 }]);

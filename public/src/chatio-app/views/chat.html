@@ -1,3 +1,11 @@
 <c-page>
-    <div flex>{{chatPageTitle}}</div>
+    <div layout="column" layout-align="center center" flex>
+        <div layout layout-align="center center" class="appear-element-effect" ng-show="displayNameForm">
+            <md-input-container>
+                <label>Enter your name</label>
+                <input type="text" ng-model="userName"/>
+            </md-input-container>
+            <md-button class="md-primary md-raised" ng-click="submitName()">Submit</md-button>
+        </div>
+    </div>
 </c-page>

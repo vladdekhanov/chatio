@@ -6,4 +6,10 @@ angular.module("chatio").controller("ChatController", [
 		$scope
 	) {
 	$scope.chatPageTitle = "Welcome to chat!";
+	$scope.userName = "";
+	$scope.displayNameForm = true;
+	
+	$scope.submitName = function() {
+		$scope.displayNameForm = false;
+	};
 }]);
