@@ -45,3 +45,24 @@
     animation-iteration-count: 1;
     padding: 20px;
 }
+
+.video-bg-container {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    opacity: 0.3;
+    z-index: 0 !important;
+}
+
+.index-area {
+    z-index: 1 !important;
+}
+
+.index-area .logo-container {
+    background-image: url('../assets/logo.png');
+    width: 220px;
+    height: 230px;
+    background-repeat: no-repeat;
+}

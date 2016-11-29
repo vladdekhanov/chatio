@@ -1,5 +1,11 @@
 <c-page>
-    <div layout layout-align="center center" flex>
-        <md-button class="md-raised md-primary" ng-click="goToChat()">Let's Chat!</md-button>
+    <div class="video-bg-container">
+        <video-bg video-id="currentVideo.videoId" start="currentVideo.start" end="currentVideo.end"></video-bg>
+    </div>
+    <div class="index-area" layout layout-align="center center" flex>
+        <div layout="column">
+            <div class="logo-container"></div>
+            <md-button class="md-raised md-primary" ng-click="goToChat()">Let's Chat!</md-button>
+        </div>
     </div>
 </c-page>

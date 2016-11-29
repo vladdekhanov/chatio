@@ -1,6 +1,7 @@
 angular.module("chatio", [
 	"ui.router",
-	"ngMaterial"
+	"ngMaterial",
+	"angularVideoBg"
 ]).config(function(
 	$stateProvider,
 	$urlRouterProvider,

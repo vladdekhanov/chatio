@@ -1,6 +1,7 @@
 angular.module("chatio", [
 	"ui.router",
-	"ngMaterial"
+	"ngMaterial",
+	"angularVideoBg"
 ]).config(function(
 	$stateProvider,
 	$urlRouterProvider,
@@ -75,7 +76,25 @@ angular.module("chatio", [
 		$scope,
 		$state
 	){
-	
+
+	$scope.youtubeVideos = [
+		{
+			// fire circles
+			videoId: "PNWONhxILFA",
+			start: 148,
+			end: 164,
+			contentZIndex: 0
+		},
+		{
+			// keyboard is breaking
+			videoId: "c5DASpdzSZU",
+			start: 14,
+			end: 75,
+			contentZIndex: 0
+		}
+	];
+
+	$scope.currentVideo = $scope.youtubeVideos[Math.floor(Math.random()*$scope.youtubeVideos.length)];
 
 	$scope.goToChat = function() {
 		$state.go("chat");
@@ -89,4 +108,14 @@ angular.module("chatio", [
         transclude: true,
         replace: true
     };
-}]);
+}]);;angular.module('chatio').factory('ShuffleHelper', function() {
+  var shuffleHelper = {};
+
+  shuffleHelper.shuffleArray = function (array) {
+    return array.sort(function() {
+        return (0.5 - Math.random());
+    });
+  };
+  
+  return shuffleHelper;
+});
