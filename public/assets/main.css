@@ -34,9 +34,10 @@
 }
 
 .appear-element-effect.ng-hide-animate {
-    animation-duration: 300ms;
+    /*animation-duration: 300ms;
     animation-name: disappear-element-effect;
-    animation-iteration-count: 1;
+    animation-iteration-count: 1;*/
+    display: none;
 }
 
 .page {
@@ -94,8 +95,13 @@
 }
 
 .chat-area .user-name {
-    font-size: 20px;
+    font-size: 16px;
     display: inline;
+    font-weight: bold;
+}
+
+.chat-area .user-name .event{
+    margin-right: 10px;
 }
 
 .chat-area .time {

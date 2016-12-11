@@ -7,17 +7,31 @@
             </md-input-container>
             <md-button class="md-primary md-raised" ng-click="submitName()">Submit</md-button>
         </div>
-        <div layout="column" class="appear-element-effect chat-area" md-whiteframe="14dp" ng-show="!displayNameForm">
+        <div layout="column" class="appear-element-effect chat-area" md-whiteframe="14dp" ng-show="!displayNameForm" flex>
             <div class="chat-container" flex>
-                <div ng-repeat="message in messages">
-                    <span ng-if="message.type == MessageType.USER_CONNECTED_MESSAGE">{{message.msg}} is connected.</span>
-                    <span ng-if="message.type == MessageType.USER_DISCONNECTED_MESSAGE">{{message.msg}} is disconnected.</span>
-                    <span ng-if="message.type == MessageType.NEW_CHAT_MESSAGE">
+                <div ng-repeat="message in messages" class="appear-element-effect">
+                    <span ng-if="message.type == MessageType.USER_CONNECTED_MESSAGE">
+                        <div class="user-name event">
+                            {{message.msg}}
+                        </div>
+                        <div class="message">
+                            is connected
+                        </div>
+                    </span>
+                    <span ng-if="message.type == MessageType.USER_DISCONNECTED_MESSAGE">
+                        <div class="user-name event">
+                            {{message.msg}}
+                        </div>
+                        <div class="message">
+                            is disconnected
+                        </div>
+                    </span>
+                    <span ng-if="message.type == MessageType.NEW_CHAT_MESSAGE" ng-style="{ 'color': message.color }">
                         <div class="user-name">
                             {{message.name}}
                         </div>
                         <div class="time">
-                            [{{message.timestamp.getHours()}}:{{message.timestamp.getMinutes()}}]
+                            [{{message.timestamp.getHours()}}:{{message.timestamp.getMinutes()}}]:
                         </div>
                         <div class="message">
                             {{message.msg}}

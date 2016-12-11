@@ -43,9 +43,11 @@ app.get("/", function(req, res){
 	res.render('index', {});
 });
 
+var clientsBase = [];
 
 io.sockets.on('connection', function (socket) {
 	socket.on('user-connected', function(user) {
+		clientsBase.push({ id: socket.id, name: user.name });
 		io.sockets.emit('user-connected', user.name)
 	});
 
@@ -54,10 +56,11 @@ io.sockets.on('connection', function (socket) {
 		cleanClientNameFn();
 	});
 
-	socket.on('disconnect', function(data){
-        io.sockets.emit('user-disconnected', { name: data.name });
+	socket.on('disconnect', function(){
+		var user = clientsBase.filter(function(user){ return user.id == socket.id; })[0];
+		delete clientsBase[clientsBase.indexOf(user)];
+        io.sockets.emit('user-disconnected', user.name);
     });
-
 });
 
 
