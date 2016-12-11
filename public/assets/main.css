@@ -71,6 +71,11 @@
     margin-top: -18px;
 }
 
+.chat-container {
+    padding: 10px;
+    overflow: auto;
+}
+
 .chat-area {
     width: 100%;
     height: calc(100% - 50px);
@@ -86,4 +91,17 @@
 
 .chat-area form .md-button {
     margin: 0;
+}
+
+.chat-area .user-name {
+    font-size: 20px;
+    display: inline;
+}
+
+.chat-area .time {
+    display: inline;
+}
+
+.chat-area .message {
+    display: inline;
 }
