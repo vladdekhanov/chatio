@@ -58,8 +58,8 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('disconnect', function(){
 		var user = clientsBase.filter(function(user){ return user.id == socket.id; })[0];
+		io.sockets.emit('user-disconnected', user.name);
 		delete clientsBase[clientsBase.indexOf(user)];
-        io.sockets.emit('user-disconnected', user.name);
     });
 });
 
