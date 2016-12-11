@@ -45,13 +45,13 @@ app.get("/", function(req, res){
 
 
 io.sockets.on('connection', function (socket) {
-	socket.on('user-connected', function(data) {
-		io.sockets.emit('user-connected', { name: data.name })
+	socket.on('user-connected', function(user) {
+		io.sockets.emit('user-connected', user.name)
 	});
 
-	socket.on('new-message', function(data, onMessageSend){
-		io.sockets.emit('new-message', { msg: data.msg});
-		onMessageSend();
+	socket.on('new-message', function(data, cleanClientNameFn){
+		io.sockets.emit('new-message', data);
+		cleanClientNameFn();
 	});
 
 	socket.on('disconnect', function(data){

@@ -1,9 +1,9 @@
 <c-page>
     <div layout="column" layout-align="center center" flex>
-        <div layout layout-align="center center" class="appear-element-effect" ng-show="displayNameForm">
+        <div layout layout-align="center center" class="appear-element-effect display-name-form" ng-show="displayNameForm">
             <md-input-container>
                 <label>Enter your name</label>
-                <input type="text" ng-model="userName"/>
+                <input type="text" ng-model="user.name"/>
             </md-input-container>
             <md-button class="md-primary md-raised" ng-click="submitName()">Submit</md-button>
         </div>
@@ -12,11 +12,21 @@
                 <div ng-repeat="message in messages">
                     <span ng-if="message.type == MessageType.USER_CONNECTED_MESSAGE">{{message.msg}} is connected.</span>
                     <span ng-if="message.type == MessageType.USER_DISCONNECTED_MESSAGE">{{message.msg}} is disconnected.</span>
-                    <span ng-if="message.type == MessageType.NEW_CHAT_MESSAGE">{{message.msg}}</span>
+                    <span ng-if="message.type == MessageType.NEW_CHAT_MESSAGE">
+                        <div class="user-name">
+                            {{message.name}}
+                        </div>
+                        <div class="time">
+                            [{{message.timestamp.getHours()}}:{{message.timestamp.getMinutes()}}]
+                        </div>
+                        <div class="message">
+                            {{message.msg}}
+                        </div>
+                    </span>
                 </div>
             </div>
-            <form name="messageForm" layout>
-                <input type="text" ng-model="currentMessage" placeholder="Type here.." flex>
+            <form name="messageForm" ng-submit="sendCurrentMessage()" layout>
+                <input type="text" ng-model="currentMessage.text" placeholder="Type here..." flex>
                 <md-button class="md-raised md-primary" ng-click="sendCurrentMessage()">Send</md-button>
             </form>
         </div>
