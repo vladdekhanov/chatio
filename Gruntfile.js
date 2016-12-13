@@ -192,7 +192,7 @@ module.exports = function (grunt) {
 
     open: {
       server: {
-        path: 'http://0.0.0.0:' + RUNNING_PORT
+        path: 'http://localhost:' + RUNNING_PORT
       }
     }
 
