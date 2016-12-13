@@ -100,7 +100,7 @@ module.exports = function (grunt) {
     watch: {
         files: ['views/**/*'],
         options: {
-            livereload: true
+            livereload: false
         },
         scripts: {
             files: [
@@ -132,16 +132,6 @@ module.exports = function (grunt) {
         // change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
       },
-      livereload: {
-        options: {
-          middleware: function (connect) {
-            return [
-              lrSnippet,
-              mountFolder(connect, '.')
-            ];
-          }
-        }
-      }
     },
 
     nodemon:{
