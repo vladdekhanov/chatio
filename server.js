@@ -11,7 +11,7 @@ var io = require('socket.io').listen(server);
 var device  = require('express-device');
 var htmlEngine = require('ejs').renderFile;
 
-var runningPortNumber = process.env.PORT;
+var runningPortNumber = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public', {
 	dotfiles: 'ignore',
