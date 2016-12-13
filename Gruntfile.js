@@ -100,7 +100,7 @@ module.exports = function (grunt) {
     watch: {
         files: ['views/**/*'],
         options: {
-            livereload: false
+            livereload: true
         },
         scripts: {
             files: [
@@ -130,8 +130,18 @@ module.exports = function (grunt) {
       options: {
         port: RUNNING_PORT,//variable at top of this file
         // change this to '0.0.0.0' to access the server from outside
-        hostname: 'localhost'
+        hostname: '0.0.0.0'
       },
+      livereload: {
+        options: {
+          middleware: function (connect) {
+            return [
+              lrSnippet,
+              mountFolder(connect, '.')
+            ];
+          }
+        }
+      }
     },
 
     nodemon:{
@@ -182,13 +192,13 @@ module.exports = function (grunt) {
 
     open: {
       server: {
-        path: 'http://localhost:' + RUNNING_PORT
+        path: 'http://0.0.0.0:' + RUNNING_PORT
       }
     }
 
   });
  
-  //grunt.registerTask('server', ['build', 'connect:livereload', 'open', 'watch']);
+  grunt.registerTask('server', ['build', 'connect:livereload', 'open', 'watch']);
  
   grunt.registerTask('build', ['cssmin', 'concat', 'uglify']);
 
