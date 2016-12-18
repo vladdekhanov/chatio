@@ -108,3 +108,7 @@
 .chat-area .message {
     display: inline;
 }
+
+c-social-share-area .md-button {
+    margin: 0;
+}
