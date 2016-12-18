@@ -1,12 +1,12 @@
 <c-page>
     <div layout="column" layout-align="center center" flex>
-        <div layout layout-align="center center" class="appear-element-effect display-name-form" ng-show="displayNameForm">
+        <form layout layout-align="center center" class="appear-element-effect display-name-form" ng-show="displayNameForm" ng-submit="submitName()">
             <md-input-container>
                 <label>Enter your name</label>
                 <input type="text" ng-model="user.name"/>
             </md-input-container>
             <md-button class="md-primary md-raised" ng-click="submitName()">Submit</md-button>
-        </div>
+        </form>
         <div layout="column" class="appear-element-effect chat-area" md-whiteframe="14dp" ng-show="!displayNameForm" flex>
             <div class="chat-container" c-chat-container flex>
                 <div ng-repeat="message in messages" class="appear-element-effect message-block">
