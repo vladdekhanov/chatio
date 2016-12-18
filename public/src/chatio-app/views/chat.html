@@ -8,8 +8,8 @@
             <md-button class="md-primary md-raised" ng-click="submitName()">Submit</md-button>
         </div>
         <div layout="column" class="appear-element-effect chat-area" md-whiteframe="14dp" ng-show="!displayNameForm" flex>
-            <div class="chat-container" flex>
-                <div ng-repeat="message in messages" class="appear-element-effect">
+            <div class="chat-container" c-chat-container flex>
+                <div ng-repeat="message in messages" class="appear-element-effect message-block">
                     <span ng-if="message.type == MessageType.USER_CONNECTED_MESSAGE">
                         <div class="user-name event">
                             {{message.msg}}

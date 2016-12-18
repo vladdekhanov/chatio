@@ -1,7 +1,8 @@
 angular.module("chatio", [
 	"ui.router",
 	"ngMaterial",
-	"angularVideoBg"
+	"angularVideoBg",
+	"duScroll"
 ]).config(function(
 	$stateProvider,
 	$urlRouterProvider,
@@ -101,6 +102,7 @@ angular.module("chatio", [
 	};
 
 	$scope.sendCurrentMessage = function() {
+		if (!$scope.currentMessage.text) return;
 		$scope.socket.emit("new-message", { 
 			name: $scope.user.name, 
 			msg: $scope.currentMessage.text,
@@ -141,6 +143,19 @@ angular.module("chatio", [
 	$scope.goToChat = function() {
 		$state.go("chat");
 	};
+}]);;angular.module("chatio").directive("cChatContainer",[
+	function(
+	){
+    return {
+        restrict: "A",
+        link: function($scope, $element) {
+            $scope.$watch(function(){
+                return angular.element($element)[0].scrollHeight;
+            }, function() {
+                $element.scrollTopAnimated(angular.element($element)[0].scrollHeight)
+            }, true);
+        }
+    };
 }]);;angular.module("chatio").directive("cPage",[
 	function(
 	){

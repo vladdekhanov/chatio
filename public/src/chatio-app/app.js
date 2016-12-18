@@ -1,7 +1,8 @@
 angular.module("chatio", [
 	"ui.router",
 	"ngMaterial",
-	"angularVideoBg"
+	"angularVideoBg",
+	"duScroll"
 ]).config(function(
 	$stateProvider,
 	$urlRouterProvider,

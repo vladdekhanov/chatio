@@ -41,6 +41,7 @@ angular.module("chatio").controller("ChatController", [
 	};
 
 	$scope.sendCurrentMessage = function() {
+		if (!$scope.currentMessage.text) return;
 		$scope.socket.emit("new-message", { 
 			name: $scope.user.name, 
 			msg: $scope.currentMessage.text,
