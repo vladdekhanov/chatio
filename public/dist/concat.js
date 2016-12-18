@@ -152,7 +152,7 @@ angular.module("chatio", [
             $scope.$watch(function(){
                 return angular.element($element)[0].scrollHeight;
             }, function() {
-                $element.scrollTopAnimated(angular.element($element)[0].scrollHeight)
+                $element.scrollTop(angular.element($element)[0].scrollHeight)
             }, true);
         }
     };

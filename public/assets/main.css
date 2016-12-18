@@ -34,9 +34,6 @@
 }
 
 .appear-element-effect.ng-hide-animate {
-    /*animation-duration: 300ms;
-    animation-name: disappear-element-effect;
-    animation-iteration-count: 1;*/
     display: none;
 }
 
