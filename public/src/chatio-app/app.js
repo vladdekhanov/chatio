@@ -2,7 +2,8 @@ angular.module("chatio", [
 	"ui.router",
 	"ngMaterial",
 	"angularVideoBg",
-	"duScroll"
+	"duScroll",
+	"720kb.socialshare"
 ]).config(function(
 	$stateProvider,
 	$urlRouterProvider,

@@ -2,7 +2,8 @@ angular.module("chatio", [
 	"ui.router",
 	"ngMaterial",
 	"angularVideoBg",
-	"duScroll"
+	"duScroll",
+	"720kb.socialshare"
 ]).config(function(
 	$stateProvider,
 	$urlRouterProvider,
@@ -155,6 +156,13 @@ angular.module("chatio", [
                 $element.scrollTop(angular.element($element)[0].scrollHeight)
             }, true);
         }
+    };
+}]);;angular.module("chatio").directive("cSocialShareArea",[
+	function(
+	){
+    return {
+        restrict: "E",
+        templateUrl: "src/chatio-app/views/directives/SocialShareArea.html"
     };
 }]);;angular.module("chatio").directive("cPage",[
 	function(
