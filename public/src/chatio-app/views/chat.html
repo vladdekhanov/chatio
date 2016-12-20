@@ -1,4 +1,7 @@
 <md-toolbar md-whiteframe="5dp" ng-include="'src/chatio-app/views/toolbar.html'"></md-toolbar>
+<md-subheader class="md-primary" class="appear-element-effect" ng-show="stats">
+    <span>Users Online: {{stats.userQty}}</span>
+</md-subheader>
 <c-page>
     <div layout="column" layout-align="center center" flex>
         <form layout layout-align="center center" class="appear-element-effect display-name-form" ng-show="displayNameForm" ng-submit="submitName()">

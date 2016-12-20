@@ -73,6 +73,7 @@ angular.module("chatio", [
 	) {
 	$scope.MessageType = MessageType;
 	$scope.messages = [];
+	$scope.stats = null;
 	$scope.user = {
 		name: ""
 	};
@@ -97,6 +98,11 @@ angular.module("chatio", [
 		$scope.socket.on("new-message", function(data) {
 			data.timestamp = new Date(data.timestamp);
 			$timeout($scope.messages.push({type: MessageType.NEW_CHAT_MESSAGE, msg: data.msg, name: data.name, timestamp: data.timestamp}));
+		});
+		$scope.socket.on("refresh-stats", function(stats) {
+			$scope.$apply(function() {
+				$scope.stats = stats
+			});
 		});
 
 		$scope.socket.emit("user-connected", { name: user.name });

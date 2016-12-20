@@ -45,10 +45,18 @@ app.get("/", function(req, res){
 
 var clientsBase = [];
 
+var refreshStats = function() {
+	var stats = {
+		userQty: clientsBase.length
+	};
+	io.sockets.emit('refresh-stats', stats)
+};
+
 io.sockets.on('connection', function (socket) {
 	socket.on('user-connected', function(user) {
 		clientsBase.push({ id: socket.id, name: user.name });
 		io.sockets.emit('user-connected', user.name)
+		refreshStats();
 	});
 
 	socket.on('new-message', function(data, cleanClientNameFn){
@@ -58,8 +66,11 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('disconnect', function(){
 		var user = clientsBase.filter(function(user){ return user.id == socket.id; })[0];
-		io.sockets.emit('user-disconnected', user.name);
-		delete clientsBase[clientsBase.indexOf(user)];
+		if (user) {
+			io.sockets.emit('user-disconnected', user.name);
+			clientsBase.splice(clientsBase.indexOf(user), 1);
+			refreshStats();
+		}
     });
 });
 
