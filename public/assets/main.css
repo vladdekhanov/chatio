@@ -109,8 +109,13 @@
     display: inline;
 }
 
-c-social-share-area .md-button {
-    margin: 0;
+c-social-share-area md-fab-speed-dial {
+    min-height: 300px;
+    margin-top: 240px;
+}
+
+c-social-share-area md-fab-speed-dial .md-button {
+    margin: 8px !important;
 }
 
 .header-title {
