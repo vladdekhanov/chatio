@@ -34,7 +34,8 @@
     "grunt-wait": "~0.1.0"
   },
   "engines": {
-    "node": "4.2.6"
+    "node": "4.2.6",
+    "npm": "2.14.12"
   },
   "scripts": {
     "start": "grunt"
