@@ -1,8 +1,17 @@
 <md-toolbar md-whiteframe="5dp" ng-include="'src/chatio-app/views/toolbar.html'"></md-toolbar>
-<md-subheader class="md-primary" class="appear-element-effect" ng-show="stats">
-    <span>Users Online: {{stats.userQty}}</span>
-</md-subheader>
 <c-page>
+    <md-card class="appear-element-effect stats-area" ng-show="stats">
+        <md-card-content>
+            <span>
+                <i class="zmdi zmdi-accounts zmdi-hc-2x">
+                    <md-tooltip>
+                    Users online
+                    </md-tooltip>
+                </i>
+                <span class="stat-value">{{stats.userQty}}</span>
+            </span>
+        </md-card-content>
+    </md-card>
     <div layout="column" layout-align="center center" flex>
         <form layout layout-align="center center" class="appear-element-effect display-name-form" ng-show="displayNameForm" ng-submit="submitName()">
             <md-input-container>

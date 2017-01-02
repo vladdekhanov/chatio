@@ -7,6 +7,7 @@ angular.module("chatio", [
 ]).config(function(
 	$stateProvider,
 	$urlRouterProvider,
+	$locationProvider,
 	$mdThemingProvider
 ){
 	$stateProvider
@@ -32,6 +33,11 @@ angular.module("chatio", [
 		})
 
 	$urlRouterProvider.otherwise("/");
+
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: false
+	});
 
 	var myRed = $mdThemingProvider.extendPalette('red', {
     	'500': '#a50000'

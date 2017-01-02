@@ -122,3 +122,14 @@ c-social-share-area md-fab-speed-dial .md-button {
     font-family: Pacifico;
     font-size: 28px;
 }
+
+.stats-area {
+    margin: 0 0 8px 0;
+}
+
+.stats-area i:hover {
+    cursor: pointer;
+}
+.stats-area .stat-value {
+    font-size: 26px;
+}
