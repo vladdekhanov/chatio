@@ -78,6 +78,7 @@
     width: 100%;
     height: calc(100% - 50px);
     background-color: #696969;
+    opacity: 0.9;
 }
 
 .chat-area form input {
@@ -125,11 +126,16 @@ c-social-share-area md-fab-speed-dial .md-button {
 
 .stats-area {
     margin: 0 0 8px 0;
+    opacity: 0.9;
 }
 
-.stats-area i:hover {
-    cursor: pointer;
-}
 .stats-area .stat-value {
     font-size: 26px;
+}
+
+.chat-page {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/assets/background.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
