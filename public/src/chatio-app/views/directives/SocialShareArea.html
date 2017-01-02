@@ -1,4 +1,4 @@
-<md-fab-speed-dial md-direction="down" class="md-fling">
+<md-fab-speed-dial md-direction="down" class="md-fling" hide-gt-sm>
     <md-fab-trigger>
         <md-button aria-label="menu" class="md-fab md-mini">
             <i class="zmdi zmdi-share zmdi-hc-lg"></i>
@@ -26,3 +26,25 @@
                </a>
     </md-fab-actions>
 </md-fab-speed-dial>
+<div hide-sm hide-xs>
+    <span>Share Us:</span>
+    <a socialshare socialshare-provider="twitter"
+               socialshare-text="Chat with me on chatio.xyz!"
+               socialshare-hashtags="chatio, anonymous-chatting, anonymous, chat, chatio"
+               socialshare-url="http://chatio.xyz">
+                <md-button class="md-fab md-mini">
+                    <i class="zmdi zmdi-twitter zmdi-hc-lg"></i>
+                    <md-tooltip md-direction="bottom">Twitter</md-tooltip>
+                </md-button>
+               </a>
+    <a socialshare socialshare-provider="vk"
+               socialshare-text="Chat with me on chatio.xyz!"
+               socialshare-description="The first anonymous chat application in the .xyz segment!"
+               socialshare-media="http://chatio.xyz/assets/logo.png"
+               socialshare-url="http://chatio.xyz">
+                <md-button class="md-fab md-mini">
+                    <i class="zmdi zmdi-vk zmdi-hc-lg"></i>
+                    <md-tooltip md-direction="bottom">Vk</md-tooltip>
+                </md-button>
+               </a>
+</div>
