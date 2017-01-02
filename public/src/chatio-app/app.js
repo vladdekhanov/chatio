@@ -34,10 +34,7 @@ angular.module("chatio", [
 
 	$urlRouterProvider.otherwise("/");
 
-	$locationProvider.html5Mode({
-		enabled: true,
-		requireBase: false
-	});
+	$locationProvider.hashPrefix("");
 
 	var myRed = $mdThemingProvider.extendPalette('red', {
     	'500': '#a50000'
